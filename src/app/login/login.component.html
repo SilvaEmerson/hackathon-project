@@ -1,0 +1,23 @@
+<!-- <div>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Login">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input type="password" matInput placeholder="Password">
+    </mat-form-field>
+    
+    <mat-slide-toggle>Mantenha-me conectado</mat-slide-toggle>
+  </form>
+</div> -->
+
+
+<div *ngIf="afAuth.user | async as user; else showLogin">
+    <h1>Hello {{ user.displayName }}!</h1>
+    <button mat-button (click)="logout()">Logout</button>
+</div>
+<ng-template #showLogin>
+    <p>Please login.</p>
+    <button mat-raised-button (click)="login()">Login with Google <mat-icon>home</mat-icon></button>
+</ng-template>
