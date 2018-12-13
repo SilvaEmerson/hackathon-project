@@ -30,7 +30,7 @@ import { VacancyListComponent } from './vacancy-list/vacancy-list.component';
     CompanyListComponent,
     EmployeeComponent,
     EmployeeListComponent,
-    EmployeeFormComponent
+    EmployeeFormComponent,
     VacancyComponent,
     UserComponent,
     VacancyListComponent
