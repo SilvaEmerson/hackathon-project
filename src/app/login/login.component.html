@@ -20,5 +20,12 @@
 
 <ng-template #showLogin>
     <p>Please login.</p>
-    <button mat-raised-button (click)="login()">Login with Google</button>
+    <button mat-raised-button (click)="login()">Login with Google <mat-icon>home</mat-icon></button>
 </ng-template>
+
+<div *ngIf="alreadyContained">
+  <input #company type="radio" name="company">Company<br>
+  <input #employee type="radio" name="employee">Employee<br>
+
+  <button (click)="confirmRegister(company.value, employee.value)">Confirm register</button>
+</div>
