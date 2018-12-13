@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   Employeers: Observable<Employee[]>;
   Companies: Observable<Company[]>;
 
-  alreadyContained: boolean = false;
+  notAlreadyContained: boolean = false;
 
   constructor(
     public afAuth: AngularFireAuth,
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       this.afAuth.user.subscribe(res => console.log(res))
       this.afAuth.user.subscribe(user => {
         let result = this.CompanyCollection.ref.where('login_id', '==', user.uid)
-        result.get().then(res => this.alreadyContained = !!res.docs);
+        result.get().then(res => this.notAlreadyContained = !!res.docs);
       })
     }
   }
@@ -49,7 +49,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  confirmRegister(company, employee) {
-
-  }
+  // confirmRegister(company, employee) {
+  //   (company)
+  //   ? this.CompanyCollection.add('')
+  //   :
+  // }
 }

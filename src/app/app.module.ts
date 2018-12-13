@@ -16,6 +16,7 @@ import { config } from '../environments/hackathon-jobs.config.js';
 import { CompanyListComponent } from './company-list/company-list.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { EmployeeFormComponent } from './employee-form/employee-form.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
     LoginComponent,
     CompanyListComponent,
     EmployeeComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    EmployeeFormComponent
   ],
   imports: [
     BrowserModule,

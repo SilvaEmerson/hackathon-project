@@ -13,19 +13,34 @@
 </div> -->
 
 
-<!-- <div *ngIf="afAuth.user | async as user; else showLogin">
+<div *ngIf="afAuth.user | async as user; else showLogin">
     <h1>Hello {{ user.displayName }}!</h1>
     <button mat-raised-button (click)="logout()">Logout</button>
-</div> -->
+</div>
 
 <ng-template #showLogin>
     <p>Please login.</p>
     <button mat-raised-button (click)="login()">Login with Google <mat-icon>home</mat-icon></button>
 </ng-template>
 
-<div *ngIf="alreadyContained">
-  <input #company type="radio" name="company">Company<br>
-  <input #employee type="radio" name="employee">Employee<br>
+<div *ngIf="notAlreadyContained">
+  <input #company type="radio" name="type">Company<br>
+  <input #employee type="radio" name="type">Employee<br>
 
-  <button (click)="confirmRegister(company.value, employee.value)">Confirm register</button>
+  <div *ngIf="#company.checked; else employeeForm">
+    <form action="">
+      <input type="text">
+      <input type="number">
+    </form>
+  </div>
+
+  <ng-template #employeeForm>
+    <div>
+      <form action="">
+        <input type="text">
+        <input type="number">
+      </form>
+    </div>
+  </ng-template>
+  <button (click)="confirmRegister(company.checked, employee.checked)">Confirm register</button>
 </div>
