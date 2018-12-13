@@ -1,5 +1,3 @@
-<ul>
-  <li *ngFor="let company of Companies | async as company">
-    {{company.name}}
-  </li>
-</ul>
+<div *ngFor="let company of Companies | async as company">
+  <app-company [company]="company"></app-company>
+</div>
