@@ -27,7 +27,7 @@
   <input #company type="radio" name="type">Company<br>
   <input #employee type="radio" name="type">Employee<br>
 
-  <div *ngIf="#company.checked; else employeeForm">
+  <div *ngIf="company.checked; else employeeForm">
     <form action="">
       <input type="text">
       <input type="number">
