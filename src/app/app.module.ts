@@ -14,13 +14,19 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
 import { config } from '../environments/hackathon-jobs.config.js';
 import { CompanyListComponent } from './company-list/company-list.component';
+import { VacancyComponent } from './vacancy/vacancy.component';
+import { UserComponent } from './user/user.component';
+import { VacancyListComponent } from './vacancy-list/vacancy-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CompanyComponent,
     LoginComponent,
-    CompanyListComponent
+    CompanyListComponent,
+    VacancyComponent,
+    UserComponent,
+    VacancyListComponent
   ],
   imports: [
     BrowserModule,

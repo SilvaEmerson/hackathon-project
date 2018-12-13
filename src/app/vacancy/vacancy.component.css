@@ -1,0 +1,18 @@
+.card-vancancy {
+    margin: 20px;
+}
+
+.header-image {
+    background-image: url("../../assets/vacancy.png");
+    background-size: cover;
+}
+
+.list-company{
+    margin: 10px;
+    list-style-type: none !important;
+}
+
+ul{
+    margin: 10px !important;
+    list-style-type: none !important;
+}
