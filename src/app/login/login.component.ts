@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
+
   logout() {
     this.afAuth.auth.signOut();
   }

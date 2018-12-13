@@ -13,11 +13,12 @@
 </div> -->
 
 
-<div *ngIf="afAuth.user | async as user; else showLogin">
+<!-- <div *ngIf="afAuth.user | async as user; else showLogin">
     <h1>Hello {{ user.displayName }}!</h1>
-    <button mat-button (click)="logout()">Logout</button>
-</div>
+    <button mat-raised-button (click)="logout()">Logout</button>
+</div> -->
+
 <ng-template #showLogin>
     <p>Please login.</p>
-    <button mat-raised-button (click)="login()">Login with Google <mat-icon>home</mat-icon></button>
+    <button mat-raised-button (click)="login()">Login with Google</button>
 </ng-template>
