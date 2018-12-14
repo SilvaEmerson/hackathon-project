@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { Vacancy } from "../Vacancy";
-import { mapChildrenIntoArray } from '@angular/router/src/url_tree';
-import { Company } from '../Company';
+import { Component, Inject, OnInit } from '@angular/core';
+import { CompanyComponent } from '../company/company.component';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
+import { Company } from '../Company'; 
 
 @Component({
   selector: 'app-vacancy-list',
@@ -12,13 +10,14 @@ import { Company } from '../Company';
 })
 export class VacancyListComponent implements OnInit {
 
-  private CompaniesCollection: AngularFirestoreCollection<Company>;
-  Vacancies: Observable<Company[]>;
+  constructor(
+    public dialogRef: MatDialogRef<CompanyComponent>,
+    @Inject(MAT_DIALOG_DATA) public company: Company[]
+  ) {}
 
-  // constructor(private afs: AngularFirestore) { 
-  //   this.CompaniesCollection = afs.collection<Company>('company');
-  //   this.Companies = this.CompaniesCollection.valueChanges();
-  //   this.Companies.subscribe(data => data.map(el => console.log(el)));
+  // onNoClick(): void {
+  //   console.log(this.Vacancies);
+  //   this.dialogRef.close();
   // }
 
   ngOnInit() {
