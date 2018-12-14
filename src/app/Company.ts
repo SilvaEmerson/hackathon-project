@@ -3,4 +3,5 @@ export class Company {
     category: string;
     description: string; 
     cnpj: string;
+    user_uid: string;
 }

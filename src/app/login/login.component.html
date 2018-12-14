@@ -1,18 +1,3 @@
-<!-- <div>
-  <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Login">
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-      <input type="password" matInput placeholder="Password">
-    </mat-form-field>
-    
-    <mat-slide-toggle>Mantenha-me conectado</mat-slide-toggle>
-  </form>
-</div> -->
-
-
 <div *ngIf="afAuth.user | async as user; else showLogin">
     <h1>Hello {{ user.displayName }}!</h1>
     <button mat-raised-button (click)="logout()">Logout</button>
@@ -23,24 +8,22 @@
     <button mat-raised-button (click)="login()">Login with Google <mat-icon>home</mat-icon></button>
 </ng-template>
 
-<div *ngIf="notAlreadyContained">
-  <input #company type="radio" name="type">Company<br>
-  <input #employee type="radio" name="type">Employee<br>
+<div *ngIf="!alreadyContained && afAuth.user">
+  <input #company type="radio" name="type" checked="True" (change)="0">Company<br>
+  <input type="radio" name="type" (change)="0">Employee<br>
 
   <div *ngIf="company.checked; else employeeForm">
-    <form action="">
-      <input type="text">
-      <input type="number">
-    </form>
+    <input [(ngModel)]="companySendPayload.name" type="text" placeholder="Company name">
+    <input [(ngModel)]="companySendPayload.cnpj" type="number" placeholder="cnpj">
+    <input [(ngModel)]="companySendPayload.category" type="text" placeholder="Company category">
   </div>
 
   <ng-template #employeeForm>
     <div>
-      <form action="">
-        <input type="text">
-        <input type="number">
-      </form>
+      <input [(ngModel)]="employeeSendPayload.name" type="text" placeholder="Employee name">
+      <input [(ngModel)]="employeeSendPayload.email" type="email" placeholder="email">
+      <input [(ngModel)]="employeeSendPayload.cpf" type="number" placeholder="cpf">
     </div>
   </ng-template>
-  <button (click)="confirmRegister(company.checked, employee.checked)">Confirm register</button>
+  <button (click)="confirmRegister(company.checked)" (change)="0">Confirm register</button>
 </div>
