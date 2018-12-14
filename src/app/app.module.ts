@@ -44,6 +44,7 @@ import { VacancyListComponent } from './vacancy-list/vacancy-list.component';
   providers: [
     AngularFireDatabase,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [VacancyListComponent]
 })
 export class AppModule { }

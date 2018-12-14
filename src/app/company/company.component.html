@@ -3,7 +3,7 @@
     <mat-card-header>
       <div mat-card-avatar class="header-image"></div>
       <mat-card-title>{{company.name}}</mat-card-title>
-      <mat-card-subtitle>{{company.category}} | {{company.cnpj}}</mat-card-subtitle> 
+      <mat-card-subtitle>Category: {{company.category}} | CNPJ: {{company.cnpj}}</mat-card-subtitle> 
     </mat-card-header>
 
     <mat-card-content>
@@ -11,8 +11,7 @@
     </mat-card-content>
 
     <mat-card-actions align="end">
-      <button mat-raised-button color="primary">SEGUIR</button>
-      <button mat-raised-button color="primary" matBadge="8" matBadgeColor="accent">VAGAS</button>
+      <button mat-raised-button color="primary" matBadge="8" matBadgeColor="accent" (click)="openDialog()">VAGAS</button>
     </mat-card-actions>
 
     <mat-card-footer>
