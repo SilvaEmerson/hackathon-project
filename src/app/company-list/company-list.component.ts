@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Company } from "../Company";
 
 @Component({
@@ -15,8 +16,14 @@ export class CompanyListComponent implements OnInit {
 
   constructor(private afs: AngularFirestore) {
     this.CompaniesCollection = afs.collection<Company>('company');
-    this.Companies = this.CompaniesCollection.valueChanges();
-    this.Companies.subscribe(data => data.map(el => console.log(el)));
+    this.Companies = this.CompaniesCollection.snapshotChanges().pipe(
+      map(el => el.map(companie => {
+          let data = companie.payload.doc.data() as Company;
+          let id = companie.payload.doc.ref.id;
+          return { id, ...data } as Company;
+        })
+      )
+    )
   }
   addCompany(Company: Company) {
     this.CompaniesCollection.add(Company);

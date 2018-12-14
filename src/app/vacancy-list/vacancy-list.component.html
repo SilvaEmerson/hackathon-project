@@ -2,6 +2,6 @@
   <h1>Vagas</h1>
   <p><strong>Empresa:</strong> {{company.name}}</p>
   <hr>
-  <app-vacancy *ngFor="let vacancy of company.vacancies" [vacancy]="vacancy"></app-vacancy>
+  <app-vacancy *ngFor="let vacancy of company.vacancies | async as vacancy" [vacancy]="vacancy"></app-vacancy>
 
 </div>
