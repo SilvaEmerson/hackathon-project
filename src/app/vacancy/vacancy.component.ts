@@ -1,4 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { Vacancy } from '../Vacancy';
 @Component({
   selector: 'app-vacancy',
@@ -8,8 +9,14 @@ import { Vacancy } from '../Vacancy';
 export class VacancyComponent implements OnInit {
 
   @Input() vacancy: Vacancy; 
-  constructor() { }
+  constructor(public snackBar: MatSnackBar) { }
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+  
   ngOnInit() {
   }
 
