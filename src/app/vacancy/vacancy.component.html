@@ -1,18 +1,17 @@
 <div>
-  <mat-card class="card-company">
+  <mat-card class="card-vacancy" primary>
     <mat-card-header>
       <div mat-card-avatar class="header-image"></div>
-      <mat-card-title>{{company.name}}</mat-card-title>
-      <mat-card-subtitle>{{company.category}} | {{company.cnpj}}</mat-card-subtitle>
+      <mat-card-title>{{vacancy.position}}</mat-card-title>
+      <mat-card-subtitle>Workload: {{vacancy.workload}} | Salary: R${{vacancy.salary}}</mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
-      {{company.description}}
+      {{vacancy.description}}
     </mat-card-content>
 
     <mat-card-actions align="end">
-      <button mat-raised-button color="primary">SEGUIR</button>
-      <button mat-raised-button color="primary" matBadge="8" matBadgeColor="accent">VAGAS</button>
+      <button mat-raised-button color="primary">APPLY</button>
     </mat-card-actions>
 
     <mat-card-footer>
