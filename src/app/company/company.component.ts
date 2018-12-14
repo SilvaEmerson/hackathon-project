@@ -16,8 +16,16 @@ export class CompanyComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(VacancyListComponent, {
       width: '60%',
-      data: {name: this.company.name, vacancies:[{ position: "a", workload: "a", salary: 1200, description: "siwsjiwjs" }, { position: "a", workload: "a", salary: 1200, description: "siwsjiwjs" }, { position: "a", workload: "a", salary: 1200, description: "siwsjiwjs" }, { position: "a", workload: "a", salary: 1200, description: "siwsjiwjs" }]
-    });
+      data: {
+        name: this.company.name,
+        vacancies: [
+          { position: "a", workload: "a", salary: 1200, description: "siwsjiwjs" },
+          { position: "a", workload: "a", salary: 1200, description: "siwsjiwjs" },
+          { position: "a", workload: "a", salary: 1200, description: "siwsjiwjs" },
+          { position: "a", workload: "a", salary: 1200, description: "siwsjiwjs" },
+        ]
+    }
+  });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

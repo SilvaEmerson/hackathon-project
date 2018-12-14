@@ -10,7 +10,10 @@ import { Company } from '../Company';
 })
 export class VacancyListComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<CompanyComponent>, @Inject(MAT_DIALOG_DATA) public companie: Company[]) {}
+  constructor(
+    public dialogRef: MatDialogRef<CompanyComponent>,
+    @Inject(MAT_DIALOG_DATA) public company: Company[]
+  ) {}
 
   // onNoClick(): void {
   //   console.log(this.Vacancies);
