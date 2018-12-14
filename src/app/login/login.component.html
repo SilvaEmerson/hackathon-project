@@ -1,29 +1,29 @@
 <div *ngIf="afAuth.user | async as user; else showLogin">
     <h1>Hello {{ user.displayName }}!</h1>
     <button mat-raised-button (click)="logout()">Logout</button>
+
+    <div *ngIf="!alreadyContained">
+      <input #company type="radio" name="type" checked="True" (change)="0">Company<br>
+      <input type="radio" name="type" (change)="0">Employee<br>
+    
+      <div *ngIf="company.checked; else employeeForm">
+        <input [(ngModel)]="companySendPayload.name" type="text" placeholder="Company name">
+        <input [(ngModel)]="companySendPayload.cnpj" type="number" placeholder="cnpj">
+        <input [(ngModel)]="companySendPayload.category" type="text" placeholder="Company category">
+      </div>
+    
+      <ng-template #employeeForm>
+        <div>
+          <input [(ngModel)]="employeeSendPayload.name" type="text" placeholder="Employee name">
+          <input [(ngModel)]="employeeSendPayload.email" type="email" placeholder="email">
+          <input [(ngModel)]="employeeSendPayload.cpf" type="number" placeholder="cpf">
+        </div>
+      </ng-template>
+      <button (click)="confirmRegister(company.checked)" (change)="0">Confirm register</button>
+    </div>
 </div>
 
 <ng-template #showLogin>
     <p>Please login.</p>
     <button mat-raised-button (click)="login()">Login with Google <mat-icon>home</mat-icon></button>
 </ng-template>
-
-<div *ngIf="!alreadyContained && afAuth.user">
-  <input #company type="radio" name="type" checked="True" (change)="0">Company<br>
-  <input type="radio" name="type" (change)="0">Employee<br>
-
-  <div *ngIf="company.checked; else employeeForm">
-    <input [(ngModel)]="companySendPayload.name" type="text" placeholder="Company name">
-    <input [(ngModel)]="companySendPayload.cnpj" type="number" placeholder="cnpj">
-    <input [(ngModel)]="companySendPayload.category" type="text" placeholder="Company category">
-  </div>
-
-  <ng-template #employeeForm>
-    <div>
-      <input [(ngModel)]="employeeSendPayload.name" type="text" placeholder="Employee name">
-      <input [(ngModel)]="employeeSendPayload.email" type="email" placeholder="email">
-      <input [(ngModel)]="employeeSendPayload.cpf" type="number" placeholder="cpf">
-    </div>
-  </ng-template>
-  <button (click)="confirmRegister(company.checked)" (change)="0">Confirm register</button>
-</div>

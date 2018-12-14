@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
     this.Companies = this.CompanyCollection.valueChanges();
 
     if (this.afAuth.user) {
-      this.afAuth.user.subscribe(res => console.log(res))
       this.afAuth.user.subscribe(async user => {
         this.currentUserUid = user.uid;
         this.alreadyContained = (await chechIfExists(this.EmployeerCollection, user.uid) ||
