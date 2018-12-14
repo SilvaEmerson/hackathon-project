@@ -11,8 +11,7 @@ export class VacancyComponent implements OnInit {
   @Input() vacancy: Vacancy; 
   constructor(public snackBar: MatSnackBar) { }
 
-  openSnackBar(event, message: string, action: string) {
-    event.target.style.visibility="hidden";
+  openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 2000,
     });
