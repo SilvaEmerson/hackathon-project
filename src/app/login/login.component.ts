@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 
 import { Company } from '../Company';
 import { Employee } from '../Employee';
-import { chechIfExists } from "../../utils";
+import { chechIfExists, sendPayload } from "../../utils";
 
 @Component({
   selector: 'app-login',
@@ -14,10 +14,10 @@ import { chechIfExists } from "../../utils";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  EmployeerCollection: AngularFirestoreCollection<Employee>;
+  EmployeeCollection: AngularFirestoreCollection<Employee>;
   CompanyCollection: AngularFirestoreCollection<Company>;
 
-  Employeers: Observable<Employee[]>;
+  Employees: Observable<Employee[]>;
   Companies: Observable<Company[]>;
 
   alreadyContained: boolean = false;
@@ -29,17 +29,19 @@ export class LoginComponent implements OnInit {
     public afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     ) {
-    this.EmployeerCollection = afs.collection<Employee>('employee');
-    this.Employeers = this.EmployeerCollection.valueChanges();
+    this.EmployeeCollection = afs.collection<Employee>('employee');
+    this.Employees = this.EmployeeCollection.valueChanges();
 
     this.CompanyCollection = afs.collection<Company>('company');
     this.Companies = this.CompanyCollection.valueChanges();
 
     if (this.afAuth.user) {
       this.afAuth.user.subscribe(async user => {
-        this.currentUserUid = user.uid;
-        this.alreadyContained = (await chechIfExists(this.EmployeerCollection, user.uid) ||
-        await chechIfExists(this.CompanyCollection, user.uid));
+        if(user !== null) {
+          this.currentUserUid = user.uid;
+          this.alreadyContained = (await chechIfExists(this.EmployeeCollection, user.uid) ||
+            await chechIfExists(this.CompanyCollection, user.uid));
+        }
       })
     }
   }
@@ -57,19 +59,7 @@ export class LoginComponent implements OnInit {
 
   async confirmRegister(company) {
     (company)
-      ? (async () => {
-        this.companySendPayload.user_uid = this.currentUserUid;
-        let result  = await this.CompanyCollection.add(
-          Object.assign({}, this.companySendPayload)
-        );
-        console.log(`Company ${result.id} saved!`)
-      })()
-      : (async () => {
-        this.employeeSendPayload.user_uid = this.currentUserUid;
-        let result = await this.EmployeerCollection.add(
-          Object.assign({}, this.employeeSendPayload)
-        );
-        console.log(`Company ${result.id} saved!`)
-      })()
+      ? sendPayload(this.companySendPayload, this.currentUserUid, this.CompanyCollection)
+      : sendPayload(this.employeeSendPayload, this.currentUserUid, this.EmployeeCollection)
   }
 }
