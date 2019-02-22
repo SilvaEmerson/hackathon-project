@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 
 import { Company } from '../Company';
 import { Employee } from '../Employee';
-import { chechIfExists, sendPayload } from "../../utils";
+import { chechIfExists, sendPayload } from '../../utils';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   Employees: Observable<Employee[]>;
   Companies: Observable<Company[]>;
 
-  alreadyContained: boolean = false;
+  alreadyContained = false;
   companySendPayload: Company = new Company();
   employeeSendPayload: Employee = new Employee();
   currentUserUid: string;
@@ -37,12 +37,12 @@ export class LoginComponent implements OnInit {
 
     if (this.afAuth.user) {
       this.afAuth.user.subscribe(async user => {
-        if(user !== null) {
+        if (user !== null) {
           this.currentUserUid = user.uid;
           this.alreadyContained = (await chechIfExists(this.EmployeeCollection, user.uid) ||
             await chechIfExists(this.CompanyCollection, user.uid));
         }
-      })
+      });
     }
   }
 
@@ -60,6 +60,6 @@ export class LoginComponent implements OnInit {
   async confirmRegister(company) {
     (company)
       ? sendPayload(this.companySendPayload, this.currentUserUid, this.CompanyCollection)
-      : sendPayload(this.employeeSendPayload, this.currentUserUid, this.EmployeeCollection)
+      : sendPayload(this.employeeSendPayload, this.currentUserUid, this.EmployeeCollection);
   }
 }

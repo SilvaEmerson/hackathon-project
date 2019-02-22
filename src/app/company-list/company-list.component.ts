@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Company } from "../Company";
+import { Company } from '../Company';
 
 @Component({
   selector: 'app-company-list',
@@ -18,15 +18,15 @@ export class CompanyListComponent implements OnInit {
     this.CompaniesCollection = afs.collection<Company>('company');
     this.Companies = this.CompaniesCollection.snapshotChanges().pipe(
       map(el => el.map(companie => {
-          let data = companie.payload.doc.data() as Company;
-          let id = companie.payload.doc.ref.id;
+          const data = companie.payload.doc.data() as Company;
+          const id = companie.payload.doc.ref.id;
           return { id, ...data } as Company;
         })
       )
-    )
+    );
   }
-  addCompany(Company: Company) {
-    this.CompaniesCollection.add(Company);
+  addCompany(company: Company) {
+    this.CompaniesCollection.add(company);
   }
 
   ngOnInit() {
