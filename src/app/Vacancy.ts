@@ -1,6 +1,6 @@
 export class Vacancy {
     position: string;
-    description: string; 
-    workload: number; 
-    salary: number; 
+    description: string;
+    workload: number;
+    salary: number;
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { VacancyListComponent } from '../vacancy-list/vacancy-list.component';
 import { MatDialog } from '@angular/material';
-import { Company } from "../Company";
+import { Company } from '../Company';
 import { Vacancy } from '../Vacancy';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -19,10 +19,10 @@ export class CompanyComponent implements OnInit {
   @Input() company: Company;
 
   constructor(
-    public dialog : MatDialog,
+    public dialog: MatDialog,
     private afs: AngularFirestore,
   ) {}
-  
+
   openDialog(): void {
     const dialogRef = this.dialog.open(VacancyListComponent, {
       width: '60%',

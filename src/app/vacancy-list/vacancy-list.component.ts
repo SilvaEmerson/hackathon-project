@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { CompanyComponent } from '../company/company.component';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Company } from '../Company';
 import { Vacancy } from '../Vacancy';
 

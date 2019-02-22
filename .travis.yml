@@ -4,4 +4,4 @@ node_js:
 install:
   - yarn install
 script:
-  - yarn run build --prod
+  - yarn run lint

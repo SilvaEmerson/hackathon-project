@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { Employee } from "../Employee";
+import { Employee } from '../Employee';
 
 @Component({
   selector: 'app-employee-list',
