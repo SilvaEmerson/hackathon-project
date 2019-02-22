@@ -15,7 +15,7 @@ import {
   AngularFireDatabaseModule,
   AngularFireDatabase
 } from "@angular/fire/database";
-import { config } from "../environments/hackathon-jobs.config.js";
+import { environment } from "../environments/environment";
 import { CompanyListComponent } from "./company-list/company-list.component";
 import { EmployeeComponent } from "./employee/employee.component";
 import { EmployeeListComponent } from "./employee-list/employee-list.component";
@@ -41,7 +41,7 @@ import { VacancyListComponent } from "./vacancy-list/vacancy-list.component";
     MaterialModule,
     BrowserAnimationsModule,
     FormsModule,
-    AngularFireModule.initializeApp(config().FIREBASE_CONFIG),
+    AngularFireModule.initializeApp(environment.FIREBASE_CONFIG),
     ReactiveFormsModule,
     AngularFireAuthModule,
     AngularFirestoreModule,

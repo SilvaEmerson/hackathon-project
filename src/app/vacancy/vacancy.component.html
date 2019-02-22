@@ -2,20 +2,29 @@
   <mat-card class="card-vacancy" primary>
     <mat-card-header>
       <div mat-card-avatar class="header-image"></div>
-      <mat-card-title>{{vacancy.position}}</mat-card-title>
-      <mat-card-subtitle>Workload: {{vacancy.workload}} | Salary: R${{vacancy.salary}}</mat-card-subtitle>
+      <mat-card-title>{{ vacancy.position }}</mat-card-title>
+      <mat-card-subtitle
+        >Workload: {{ vacancy.workload }} | Salary: R${{
+          vacancy.salary
+        }}</mat-card-subtitle
+      >
     </mat-card-header>
 
     <mat-card-content>
-      {{vacancy.description}}
+      {{ vacancy.description }}
     </mat-card-content>
 
     <mat-card-actions align="end">
-      <button #apply (click)="openSnackBar('Applied', 'X', apply)" mat-raised-button color="primary">APPLY</button>
+      <button
+        #apply
+        (click)="openSnackBar('Applied', 'X')"
+        mat-raised-button
+        color="primary"
+      >
+        APPLY
+      </button>
     </mat-card-actions>
 
-    <mat-card-footer>
-
-    </mat-card-footer>
+    <mat-card-footer> </mat-card-footer>
   </mat-card>
 </div>
