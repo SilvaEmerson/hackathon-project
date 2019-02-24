@@ -18,7 +18,7 @@ export class CompanyListComponent implements OnInit {
     this.CompaniesCollection = afs.collection<Company>('company');
     this.Companies = this.CompaniesCollection.snapshotChanges().pipe(
       map(el => el.map(companie => {
-          const data = companie.payload.doc.data() as Company;
+          const data = companie.payload.doc.data();
           const id = companie.payload.doc.ref.id;
           return { id, ...data } as Company;
         })
